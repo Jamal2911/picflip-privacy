@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PicFlip Support – Hilfe und Kontakt für die PicFlip iPhone-App.">
+  <title>PicFlip – Support</title>
+  <style>
+    :root { color-scheme: light dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; background: #f7f8fb; color: #18202c; line-height: 1.65; }
+    main { max-width: 680px; margin: 9vh auto; padding: 0 22px; }
+    .card { background: white; border: 1px solid #e4e7ec; border-radius: 20px; padding: clamp(24px,5vw,44px); box-shadow: 0 12px 32px #18202c0a; }
+    .brand { font-weight: 750; letter-spacing: -.03em; font-size: 1.15rem; }
+    .lang { display: flex; gap: 8px; margin: 24px 0 30px; }
+    button { background: transparent; color: #39475b; border: 1px solid #d8dfe8; padding: 8px 15px; border-radius: 9px; cursor: pointer; font: inherit; }
+    button[aria-pressed="true"] { background: #18202c; color: white; border-color: #18202c; }
+    h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); letter-spacing: -.04em; margin: 0 0 10px; }
+    p { margin: 0 0 18px; }
+    a { color: #175fc2; overflow-wrap: anywhere; }
+    .contact { display: inline-block; padding: 11px 18px; border-radius: 10px; background: #175fc2; color: white; text-decoration: none; font-weight: 650; margin: 8px 0 18px; }
+    footer { margin-top: 25px; font-size: .85rem; color: #677486; }
+    [hidden] { display: none !important; }
+    @media (prefers-color-scheme: dark) { body { background: #10151e; color: #e8edf5; } .card { background: #1b2431; border-color: #303c4b; } button { color: #d5deeb; border-color: #465367; } button[aria-pressed="true"] { background: #e8edf5; color: #18202c; border-color: #e8edf5; } a { color: #8dbaff; } .contact { background: #367be0; color: white; } footer { color: #a3adba; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <div class="brand">PicFlip</div>
+      <nav class="lang" aria-label="Language / Sprache">
+        <button id="de-btn" type="button" aria-pressed="true" onclick="setLanguage('de')">Deutsch</button>
+        <button id="en-btn" type="button" aria-pressed="false" onclick="setLanguage('en')">English</button>
+      </nav>
+      <section id="de" lang="de">
+        <h1>Support & Kontakt</h1>
+        <p>Du hast Fragen zu PicFlip, benötigst Hilfe oder möchtest Feedback geben? Schreib mir gerne eine E-Mail.</p>
+        <a class="contact" href="mailto:contact@jamalarouna.de?subject=PicFlip%20Support">Support kontaktieren</a>
+        <p>E-Mail: <a href="mailto:contact@jamalarouna.de">contact@jamalarouna.de</a></p>
+        <p>Bitte beschreibe dein Anliegen möglichst genau. Bei technischen Problemen helfen die verwendete iOS-Version und eine kurze Fehlerbeschreibung.</p>
+      </section>
+      <section id="en" lang="en" hidden>
+        <h1>Support & Contact</h1>
+        <p>Have a question about PicFlip, need help, or want to share feedback? Feel free to send me an email.</p>
+        <a class="contact" href="mailto:contact@jamalarouna.de?subject=PicFlip%20Support">Contact support</a>
+        <p>Email: <a href="mailto:contact@jamalarouna.de">contact@jamalarouna.de</a></p>
+        <p>Please describe your request as clearly as possible. For technical issues, including your iOS version and a brief description of the problem is helpful.</p>
+      </section>
+      <footer>© 2026 Jamal Arouna · PicFlip</footer>
+    </div>
+  </main>
+  <script>
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.getElementById('de').hidden = lang !== 'de';
+      document.getElementById('en').hidden = lang !== 'en';
+      document.getElementById('de-btn').setAttribute('aria-pressed', String(lang === 'de'));
+      document.getElementById('en-btn').setAttribute('aria-pressed', String(lang === 'en'));
+    }
+    setLanguage(navigator.language.toLowerCase().startsWith('de') ? 'de' : 'en');
+  </script>
+</body>
+</html>
